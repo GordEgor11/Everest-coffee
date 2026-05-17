@@ -144,6 +144,16 @@ const handleNavClick = (event) => {
     return;
   }
 
+  const canAnimateNatively =
+    transitionPanelItems.every((panel) => typeof panel.animate === "function") &&
+    typeof transitionLine.animate === "function";
+
+  if (!canAnimateNatively) {
+    jumpToTarget(target, hash);
+    isTransitioning = false;
+    return;
+  }
+
   animateWithNativeMotion(target, hash);
 };
 

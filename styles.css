@@ -107,6 +107,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: clamp(18px, 3vw, 34px);
   min-height: 34px;
   pointer-events: auto;
 }
@@ -815,6 +816,7 @@ body {
   }
 
   .site-nav__inner {
+    gap: 18px;
     min-height: 34px;
   }
 
