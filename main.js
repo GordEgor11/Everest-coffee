@@ -14,7 +14,7 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let isTransitioning = false;
 let galleryIndex = 0;
-const typingWords = ["COFFE", "DESSERTS", "TEA"];
+const typingWords = ["COFFEE", "DESSERTS", "TEA"];
 const transitionTiming = {
   close: 0.42,
   lineIn: 0.2,
