@@ -15,6 +15,13 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let isTransitioning = false;
 let galleryIndex = 0;
 const typingWords = ["COFFE", "DESSERTS", "TEA"];
+const transitionTiming = {
+  close: 0.42,
+  lineIn: 0.2,
+  lineOut: 0.18,
+  open: 0.46,
+  stagger: 0.025,
+};
 
 const updateScroll = () => {
   coffeeItems.forEach((item) => {
@@ -30,9 +37,18 @@ const updateScroll = () => {
 };
 
 const jumpToTarget = (target, hash) => {
-  target.scrollIntoView({ behavior: "auto", block: "start" });
+  const root = document.documentElement;
+  const previousScrollBehavior = root.style.scrollBehavior;
+  const targetTop = target.getBoundingClientRect().top + window.scrollY;
+
+  root.style.scrollBehavior = "auto";
+  window.scrollTo({ top: targetTop, left: 0, behavior: "auto" });
   history.pushState(null, "", hash);
   updateScroll();
+
+  window.requestAnimationFrame(() => {
+    root.style.scrollBehavior = previousScrollBehavior;
+  });
 };
 
 const animateWithGsap = (target, hash) => {
@@ -58,11 +74,11 @@ const animateWithGsap = (target, hash) => {
   });
 
   timeline
-    .to(transitionPanelItems, { scaleY: 1, duration: 0.7, stagger: 0.04 })
-    .to(transitionLine, { opacity: 1, scaleX: 1, duration: 0.36, ease: "power2.out" }, "-=0.3")
-    .add(() => jumpToTarget(target, hash), "+=0.08")
-    .to(transitionLine, { opacity: 0, scaleX: 0, duration: 0.3, ease: "power2.in" }, "+=0.08")
-    .to(transitionPanelItems, { scaleY: 0, duration: 0.78, stagger: 0.04 }, "-=0.08");
+    .to(transitionPanelItems, { scaleY: 1, duration: transitionTiming.close, stagger: transitionTiming.stagger })
+    .to(transitionLine, { opacity: 1, scaleX: 1, duration: transitionTiming.lineIn, ease: "power2.out" }, "-=0.16")
+    .add(() => jumpToTarget(target, hash), "+=0.02")
+    .to(transitionLine, { opacity: 0, scaleX: 0, duration: transitionTiming.lineOut, ease: "power2.in" }, "+=0.02")
+    .to(transitionPanelItems, { scaleY: 0, duration: transitionTiming.open, stagger: transitionTiming.stagger }, "-=0.04");
 };
 
 const animateWithNativeMotion = async (target, hash) => {
@@ -71,8 +87,8 @@ const animateWithNativeMotion = async (target, hash) => {
 
   const closeAnimation = transitionPanelItems.map((panel, index) =>
     panel.animate([{ transform: "scaleY(0)" }, { transform: "scaleY(1)" }], {
-      duration: 700,
-      delay: index * 40,
+      duration: transitionTiming.close * 1000,
+      delay: index * transitionTiming.stagger * 1000,
       easing: "cubic-bezier(0.76, 0, 0.24, 1)",
       fill: "forwards",
     }),
@@ -83,8 +99,8 @@ const animateWithNativeMotion = async (target, hash) => {
       { opacity: 1, transform: "scaleX(1)" },
     ],
     {
-      duration: 360,
-      delay: 390,
+      duration: transitionTiming.lineIn * 1000,
+      delay: 260,
       easing: "cubic-bezier(0.22, 1, 0.36, 1)",
       fill: "forwards",
     },
@@ -99,16 +115,16 @@ const animateWithNativeMotion = async (target, hash) => {
       { opacity: 0, transform: "scaleX(0)" },
     ],
     {
-      duration: 300,
-      delay: 80,
+      duration: transitionTiming.lineOut * 1000,
+      delay: 20,
       easing: "cubic-bezier(0.64, 0, 0.78, 0)",
       fill: "forwards",
     },
   );
   const openAnimation = transitionPanelItems.map((panel, index) =>
     panel.animate([{ transform: "scaleY(1)" }, { transform: "scaleY(0)" }], {
-      duration: 780,
-      delay: 120 + index * 40,
+      duration: transitionTiming.open * 1000,
+      delay: 40 + index * transitionTiming.stagger * 1000,
       easing: "cubic-bezier(0.76, 0, 0.24, 1)",
       fill: "forwards",
     }),
