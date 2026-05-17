@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Everest Coffee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="transition-screen" aria-hidden="true">
+      <div class="transition-screen__panel transition-screen__panel--top"></div>
+      <div class="transition-screen__panel transition-screen__panel--bottom"></div>
+      <div class="transition-screen__line"></div>
+    </div>
+
+    <header class="site-nav" aria-label="Основная навигация">
+      <nav class="site-nav__inner">
+        <a class="site-nav__link" href="#menu">Menu</a>
+      </nav>
+    </header>
+
+    <main class="site-shell">
+      <div class="hero-scroll">
+        <section class="hero" aria-label="Everest Coffee">
+          <div class="hero__content">
+            <p class="hero__typing" aria-label="Coffee, desserts, tea">
+              <span class="hero__typing-text" aria-hidden="true">COFFE</span>
+            </p>
+
+            <h1 class="hero__title">
+              <span class="hero__word">
+                Eve<img class="hero__mark" src="./горы.png" alt="" aria-hidden="true" />rest
+              </span>
+              <span>Coffee</span>
+            </h1>
+          </div>
+
+          <div class="coffee-scene" aria-hidden="true">
+            <img class="coffee coffee--one" src="./coffee.png" alt="" data-speed="-0.05" />
+            <img class="coffee coffee--two" src="./coffee.png" alt="" data-speed="0.11" />
+            <img class="coffee coffee--three" src="./coffee.png" alt="" data-speed="-0.09" />
+            <img class="coffee coffee--four" src="./coffee.png" alt="" data-speed="0.07" />
+            <img class="coffee coffee--five" src="./coffee.png" alt="" data-speed="-0.12" />
+            <img class="coffee coffee--six" src="./coffee.png" alt="" data-speed="0.14" />
+          </div>
+        </section>
+
+        <section class="menu-section" id="menu" aria-labelledby="menu-title">
+          <div class="menu-section__inner">
+            <div class="menu-section__intro">
+              <h2 class="menu-section__title" id="menu-title">Меню</h2>
+            </div>
+
+            <div class="menu-grid" aria-label="Меню Everest Coffee">
+              <article class="menu-category">
+                <h3 class="menu-category__title">Завтраки</h3>
+
+                <div class="menu-list">
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Английский завтрак</h4>
+                    <span class="menu-item__price">900 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Яичница СССР с горошком</h4>
+                    <span class="menu-item__price">450 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Шакшука</h4>
+                    <span class="menu-item__price">800 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Омлет СССР</h4>
+                    <span class="menu-item__price">500 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Каша Геркулесовая</h4>
+                    <p class="menu-item__description">Домашнее варенье 2 вида, сезонные ягоды</p>
+                    <span class="menu-item__price">600 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Каша Рисовая</h4>
+                    <p class="menu-item__description">Домашнее варенье 2 вида, сезонные ягоды</p>
+                    <span class="menu-item__price">600 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Бриошь СССР с клубникой</h4>
+                    <span class="menu-item__price">750 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Сырники с вишнёвым соусом и сметаной</h4>
+                    <span class="menu-item__price">750 ₽</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="menu-category">
+                <h3 class="menu-category__title">Допы к завтраку</h3>
+
+                <div class="menu-list">
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Яйцо</h4>
+                    <span class="menu-item__price">200 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Сосиска</h4>
+                    <span class="menu-item__price">200 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Бекон</h4>
+                    <span class="menu-item__price">200 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Сыр</h4>
+                    <span class="menu-item__price">200 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Помидор</h4>
+                    <span class="menu-item__price">200 ₽</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="menu-category">
+                <h3 class="menu-category__title">Салаты</h3>
+
+                <div class="menu-list">
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Хрустящий баклажан с томатами в соусе чили</h4>
+                    <span class="menu-item__price">800 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Салат Овощной</h4>
+                    <span class="menu-item__price">750 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Цезарь с курицей</h4>
+                    <span class="menu-item__price">800 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Салат Зелёный с Горгонзолой</h4>
+                    <span class="menu-item__price">900 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Цезарь с креветками</h4>
+                    <span class="menu-item__price">900 ₽</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="menu-category">
+                <h3 class="menu-category__title">Горячее</h3>
+
+                <div class="menu-list">
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Бургер ДеЛаперуз</h4>
+                    <span class="menu-item__price">1050 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Картофель жаренный от Папы</h4>
+                    <span class="menu-item__price">1000 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Пельмени в ассортименте</h4>
+                    <p class="menu-item__description">Куриные, индейка на выбор</p>
+                    <span class="menu-item__price">650 ₽</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="menu-category">
+                <h3 class="menu-category__title">Паста</h3>
+
+                <div class="menu-list">
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Карбонара</h4>
+                    <span class="menu-item__price">850 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">С креветками</h4>
+                    <span class="menu-item__price">950 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Болоньезе</h4>
+                    <span class="menu-item__price">780 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Удон с курицей</h4>
+                    <span class="menu-item__price">750 ₽</span>
+                  </div>
+
+                  <div class="menu-item">
+                    <h4 class="menu-item__name">Макарошки с сыром и сосиской</h4>
+                    <span class="menu-item__price">650 ₽</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="gallery-section" aria-labelledby="gallery-title">
+          <div class="gallery-section__inner">
+            <div class="gallery-section__intro">
+              <h2 class="gallery-section__title" id="gallery-title">Галерея</h2>
+            </div>
+
+            <div class="gallery-carousel" aria-label="Галерея Everest Coffee">
+              <div class="gallery-carousel__stage">
+                <figure class="gallery-slide is-active">
+                  <img src="./фото/1.webp" alt="Интерьер Everest Coffee" />
+                </figure>
+                <figure class="gallery-slide">
+                  <img src="./фото/2.webp" alt="Витрина Everest Coffee" />
+                </figure>
+                <figure class="gallery-slide">
+                  <img src="./фото/3.webp" alt="Зал Everest Coffee" />
+                </figure>
+                <figure class="gallery-slide">
+                  <img src="./фото/4.webp" alt="Детали интерьера Everest Coffee" />
+                </figure>
+                <figure class="gallery-slide">
+                  <img src="./фото/6.webp" alt="Кофе и десерты Everest Coffee" />
+                </figure>
+                <figure class="gallery-slide">
+                  <img src="./фото/7.webp" alt="Столик в Everest Coffee" />
+                </figure>
+                <figure class="gallery-slide">
+                  <img src="./фото/8.webp" alt="Фасад Everest Coffee" />
+                </figure>
+                <figure class="gallery-slide">
+                  <img src="./фото/9.webp" alt="Атмосфера Everest Coffee" />
+                </figure>
+              </div>
+
+              <div class="gallery-carousel__controls">
+                <button class="gallery-carousel__button" type="button" data-gallery-direction="-1" aria-label="Предыдущее фото">
+                  &lsaquo;
+                </button>
+                <button class="gallery-carousel__button" type="button" data-gallery-direction="1" aria-label="Следующее фото">
+                  &rsaquo;
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="contacts-section" aria-labelledby="contacts-title">
+          <div class="contacts-section__inner">
+            <div class="contacts-section__intro">
+              <h2 class="contacts-section__title" id="contacts-title">Контакты</h2>
+            </div>
+
+            <div class="contacts-panel" aria-label="Контакты Everest Coffee">
+              <a class="contacts-item" href="tel:+79255051278">
+                <span class="contacts-item__label">Телефон</span>
+                <span class="contacts-item__value">+7 (925) 505-12-78</span>
+              </a>
+
+              <address class="contacts-item">
+                <span class="contacts-item__label">Адрес</span>
+                <span class="contacts-item__value">Сходненская ул., 50</span>
+              </address>
+            </div>
+
+            <div class="contacts-map" aria-label="Карта проезда к Everest Coffee">
+              <iframe
+                class="contacts-map__frame"
+                src="https://yandex.ru/map-widget/v1/?ll=37.477822%2C55.848001&mode=search&oid=8865529113&ol=biz&z=16"
+                title="Everest Coffee на Яндекс Картах"
+                loading="lazy"
+                allowfullscreen
+              ></iframe>
+
+              <a
+                class="contacts-map__link"
+                href="https://yandex.ru/maps/org/delaperuz/8865529113/?ll=37.477822%2C55.848001&z=16"
+                target="_blank"
+                rel="noopener"
+              >
+                Открыть в Яндекс Картах
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script async src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
