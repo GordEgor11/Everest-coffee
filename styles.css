@@ -4,7 +4,7 @@
 
 :root {
   --text-color: #bdc7ce;
-  --page-bg: #24292e;
+  --page-bg: #ffffff;
   --line-soft: rgba(189, 199, 206, 0.16);
   --line-strong: rgba(189, 199, 206, 0.26);
 }
@@ -165,6 +165,8 @@ body {
   display: grid;
   justify-items: center;
   gap: clamp(12px, 1.8vw, 22px);
+  width: 100%;
+  max-width: calc(100vw - clamp(32px, 4vw, 48px));
 }
 
 .hero__typing {
@@ -707,7 +709,7 @@ body {
   padding: 0 18px;
   border: 1px solid rgba(189, 199, 206, 0.34);
   border-radius: 999px;
-  background: rgba(36, 41, 46, 0.82);
+  background: rgba(255, 255, 255, 0.82);
   color: var(--text-color);
   font-size: 13px;
   font-weight: 700;
@@ -825,7 +827,8 @@ body {
   }
 
   .hero__title {
-    font-size: clamp(54px, min(20vw, 21vh), 76px);
+    max-width: 100%;
+    font-size: clamp(44px, min(16vw, 18vh), 66px);
     line-height: 0.8;
   }
 
