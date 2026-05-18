@@ -113,29 +113,50 @@ body {
 }
 
 .site-nav__link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 34px;
-  padding: 0 2px 4px;
-  border-bottom: 2px solid currentColor;
+  min-height: 40px;
+  padding: 0 8px 5px;
   color: var(--text-color);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0;
   text-decoration: none;
   text-transform: uppercase;
+  transform-origin: center;
   transition:
-    border-color 220ms ease,
     color 220ms ease,
-    opacity 220ms ease;
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.site-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 220ms ease;
 }
 
 .site-nav__link:hover,
 .site-nav__link:focus-visible {
   color: var(--text-color);
-  opacity: 0.72;
+  opacity: 0.86;
+  transform: scale(1.06);
+}
+
+.site-nav__link:hover::after,
+.site-nav__link:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .site-nav__link:focus-visible {
@@ -952,7 +973,7 @@ body {
 
 .contacts-panel {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--line-strong);
   border-bottom: 1px solid var(--line-strong);
 }
@@ -1000,6 +1021,37 @@ body {
   font-size: clamp(24px, 3vw, 42px);
   font-weight: 600;
   line-height: 1;
+}
+
+.contacts-item[href^="tel"] .contacts-item__value {
+  white-space: nowrap;
+  font-size: clamp(22px, 2.4vw, 32px);
+}
+
+.contacts-hours {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  color: var(--text-color);
+  font-size: clamp(18px, 1.55vw, 24px);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.contacts-hours__row {
+  display: grid;
+  grid-template-columns: minmax(58px, 0.7fr) max-content;
+  gap: 18px;
+  align-items: baseline;
+}
+
+.contacts-hours dt,
+.contacts-hours dd {
+  margin: 0;
+}
+
+.contacts-hours dt {
+  opacity: 0.62;
 }
 
 .contacts-map {
@@ -1149,7 +1201,8 @@ body {
   }
 
   .site-nav__link {
-    min-height: 34px;
+    min-height: 38px;
+    padding-inline: 6px;
   }
 
   .hero__title {
