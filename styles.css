@@ -167,6 +167,7 @@ body {
   gap: clamp(12px, 1.8vw, 22px);
   width: 100%;
   max-width: calc(100vw - clamp(32px, 4vw, 48px));
+  transform: translateY(clamp(-24px, -2vh, -10px));
 }
 
 .hero__typing {
@@ -226,6 +227,315 @@ body {
   margin: 0 0.02em;
   object-fit: contain;
   vertical-align: -0.06em;
+}
+
+.hero__tagline {
+  margin: clamp(-10px, -0.8vw, -4px) 0 0;
+  color: var(--text-color);
+  font-family: "Pacifico", "Brush Script MT", cursive;
+  font-size: clamp(30px, 4.6vw, 64px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: none;
+  transform: rotate(-2deg);
+}
+
+.hero__menu-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(44px, 4.2vw, 54px);
+  margin-top: clamp(18px, 2.2vw, 32px);
+  padding: 0 clamp(22px, 2.6vw, 34px);
+  border: 1px solid var(--text-color);
+  border-radius: 999px;
+  background: var(--text-color);
+  color: var(--page-bg);
+  font-size: clamp(13px, 1.05vw, 15px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 14px 34px rgba(36, 41, 46, 0.16);
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.hero__menu-link:hover,
+.hero__menu-link:focus-visible {
+  background: var(--page-bg);
+  color: var(--text-color);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 42px rgba(36, 41, 46, 0.18);
+}
+
+.hero__menu-link:focus-visible {
+  outline: 2px solid rgba(36, 41, 46, 0.32);
+  outline-offset: 4px;
+}
+
+.hero__hours {
+  margin: clamp(14px, 1.8vw, 30px) 0 0;
+  color: var(--text-color);
+  font-size: clamp(15px, 1.45vw, 22px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.bean-rain {
+  position: absolute;
+  inset: -22vh 0 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bean-rain__bean {
+  --bean-left: 50%;
+  --bean-size: 42px;
+  --bean-delay: 0s;
+  --bean-duration: 18s;
+  --bean-drift: 0px;
+  --bean-rotation: 0deg;
+  --bean-spin: 180deg;
+  position: absolute;
+  top: 0;
+  left: var(--bean-left);
+  width: var(--bean-size);
+  height: var(--bean-size);
+  opacity: 0.5;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 18px rgba(36, 41, 46, 0.1));
+  transform: translate3d(-50%, -26vh, 0) rotate(var(--bean-rotation));
+  animation: bean-rain-fall var(--bean-duration) linear infinite;
+  animation-delay: var(--bean-delay);
+  will-change: transform;
+}
+
+.bean-rain__bean--1 {
+  --bean-left: 4%;
+  --bean-size: clamp(26px, 3.2vw, 52px);
+  --bean-delay: -4s;
+  --bean-duration: 19s;
+  --bean-drift: 26px;
+  --bean-rotation: -18deg;
+  --bean-spin: 240deg;
+}
+
+.bean-rain__bean--2 {
+  --bean-left: 9%;
+  --bean-size: clamp(22px, 2.5vw, 42px);
+  --bean-delay: -13s;
+  --bean-duration: 24s;
+  --bean-drift: -18px;
+  --bean-rotation: 31deg;
+  --bean-spin: -200deg;
+}
+
+.bean-rain__bean--3 {
+  --bean-left: 15%;
+  --bean-size: clamp(30px, 3.6vw, 58px);
+  --bean-delay: -8s;
+  --bean-duration: 21s;
+  --bean-drift: 34px;
+  --bean-rotation: 76deg;
+  --bean-spin: 310deg;
+}
+
+.bean-rain__bean--4 {
+  --bean-left: 21%;
+  --bean-size: clamp(20px, 2.4vw, 38px);
+  --bean-delay: -17s;
+  --bean-duration: 26s;
+  --bean-drift: -30px;
+  --bean-rotation: -44deg;
+  --bean-spin: -260deg;
+}
+
+.bean-rain__bean--5 {
+  --bean-left: 27%;
+  --bean-size: clamp(28px, 3vw, 50px);
+  --bean-delay: -2s;
+  --bean-duration: 22s;
+  --bean-drift: 21px;
+  --bean-rotation: 12deg;
+  --bean-spin: 220deg;
+}
+
+.bean-rain__bean--6 {
+  --bean-left: 32%;
+  --bean-size: clamp(24px, 2.8vw, 44px);
+  --bean-delay: -11s;
+  --bean-duration: 18s;
+  --bean-drift: -24px;
+  --bean-rotation: 102deg;
+  --bean-spin: -300deg;
+}
+
+.bean-rain__bean--7 {
+  --bean-left: 38%;
+  --bean-size: clamp(34px, 4vw, 64px);
+  --bean-delay: -19s;
+  --bean-duration: 27s;
+  --bean-drift: 38px;
+  --bean-rotation: -67deg;
+  --bean-spin: 280deg;
+}
+
+.bean-rain__bean--8 {
+  --bean-left: 44%;
+  --bean-size: clamp(21px, 2.4vw, 40px);
+  --bean-delay: -6s;
+  --bean-duration: 20s;
+  --bean-drift: -16px;
+  --bean-rotation: 48deg;
+  --bean-spin: -180deg;
+}
+
+.bean-rain__bean--9 {
+  --bean-left: 49%;
+  --bean-size: clamp(29px, 3.4vw, 54px);
+  --bean-delay: -15s;
+  --bean-duration: 25s;
+  --bean-drift: 30px;
+  --bean-rotation: -12deg;
+  --bean-spin: 260deg;
+}
+
+.bean-rain__bean--10 {
+  --bean-left: 55%;
+  --bean-size: clamp(23px, 2.7vw, 43px);
+  --bean-delay: -9s;
+  --bean-duration: 23s;
+  --bean-drift: -32px;
+  --bean-rotation: 88deg;
+  --bean-spin: -240deg;
+}
+
+.bean-rain__bean--11 {
+  --bean-left: 60%;
+  --bean-size: clamp(31px, 3.6vw, 56px);
+  --bean-delay: -1s;
+  --bean-duration: 19s;
+  --bean-drift: 24px;
+  --bean-rotation: -39deg;
+  --bean-spin: 300deg;
+}
+
+.bean-rain__bean--12 {
+  --bean-left: 64%;
+  --bean-size: clamp(20px, 2.3vw, 37px);
+  --bean-delay: -20s;
+  --bean-duration: 28s;
+  --bean-drift: -21px;
+  --bean-rotation: 18deg;
+  --bean-spin: -210deg;
+}
+
+.bean-rain__bean--13 {
+  --bean-left: 69%;
+  --bean-size: clamp(27px, 3.1vw, 49px);
+  --bean-delay: -7s;
+  --bean-duration: 21s;
+  --bean-drift: 28px;
+  --bean-rotation: 119deg;
+  --bean-spin: 230deg;
+}
+
+.bean-rain__bean--14 {
+  --bean-left: 74%;
+  --bean-size: clamp(33px, 3.9vw, 62px);
+  --bean-delay: -16s;
+  --bean-duration: 26s;
+  --bean-drift: -36px;
+  --bean-rotation: -83deg;
+  --bean-spin: -320deg;
+}
+
+.bean-rain__bean--15 {
+  --bean-left: 79%;
+  --bean-size: clamp(23px, 2.6vw, 42px);
+  --bean-delay: -3s;
+  --bean-duration: 18s;
+  --bean-drift: 18px;
+  --bean-rotation: 57deg;
+  --bean-spin: 190deg;
+}
+
+.bean-rain__bean--16 {
+  --bean-left: 84%;
+  --bean-size: clamp(30px, 3.5vw, 55px);
+  --bean-delay: -12s;
+  --bean-duration: 24s;
+  --bean-drift: -27px;
+  --bean-rotation: -27deg;
+  --bean-spin: -250deg;
+}
+
+.bean-rain__bean--17 {
+  --bean-left: 89%;
+  --bean-size: clamp(22px, 2.5vw, 39px);
+  --bean-delay: -22s;
+  --bean-duration: 29s;
+  --bean-drift: 33px;
+  --bean-rotation: 69deg;
+  --bean-spin: 270deg;
+}
+
+.bean-rain__bean--18 {
+  --bean-left: 94%;
+  --bean-size: clamp(28px, 3.2vw, 52px);
+  --bean-delay: -5s;
+  --bean-duration: 20s;
+  --bean-drift: -20px;
+  --bean-rotation: -52deg;
+  --bean-spin: -220deg;
+}
+
+.bean-rain__bean--19 {
+  --bean-left: 12%;
+  --bean-size: clamp(32px, 3.8vw, 60px);
+  --bean-delay: -24s;
+  --bean-duration: 30s;
+  --bean-drift: 42px;
+  --bean-rotation: 24deg;
+  --bean-spin: 340deg;
+}
+
+.bean-rain__bean--20 {
+  --bean-left: 72%;
+  --bean-size: clamp(25px, 2.9vw, 46px);
+  --bean-delay: -14s;
+  --bean-duration: 22s;
+  --bean-drift: -29px;
+  --bean-rotation: -96deg;
+  --bean-spin: -280deg;
+}
+
+@keyframes bean-rain-fall {
+  0% {
+    transform: translate3d(-50%, -26vh, 0) rotate(var(--bean-rotation));
+  }
+
+  100% {
+    transform: translate3d(calc(-50% + var(--bean-drift)), 128vh, 0)
+      rotate(calc(var(--bean-rotation) + var(--bean-spin)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bean-rain__bean {
+    animation: none;
+    transform: translate3d(-50%, 20vh, 0) rotate(var(--bean-rotation));
+  }
 }
 
 .coffee-scene {
@@ -823,6 +1133,10 @@ body {
     padding: 16px;
   }
 
+  .hero__content {
+    transform: translateY(-28px);
+  }
+
   .site-nav {
     top: 12px;
     left: 16px;
@@ -849,6 +1163,24 @@ body {
     height: 1.08em;
     margin: 0 0.01em;
     vertical-align: -0.12em;
+  }
+
+  .hero__tagline {
+    margin-top: -2px;
+    font-size: clamp(26px, 9.2vw, 38px);
+    line-height: 1.08;
+  }
+
+  .hero__menu-link {
+    min-height: 42px;
+    margin-top: 16px;
+    padding: 0 22px;
+    font-size: 12px;
+  }
+
+  .hero__hours {
+    margin-top: -2px;
+    font-size: 14px;
   }
 
   .coffee {

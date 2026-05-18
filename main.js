@@ -8,6 +8,7 @@ const transitionPanels = document.querySelectorAll(".transition-screen__panel");
 const transitionPanelItems = Array.from(transitionPanels);
 const transitionLine = document.querySelector(".transition-screen__line");
 const typingText = document.querySelector(".hero__typing-text");
+const todayHours = document.querySelector("[data-today-hours]");
 const gallerySlides = Array.from(document.querySelectorAll(".gallery-slide"));
 const galleryButtons = document.querySelectorAll("[data-gallery-direction]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -15,6 +16,15 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let isTransitioning = false;
 let galleryIndex = 0;
 const typingWords = ["COFFEE", "DESSERTS", "TEA"];
+const scheduleByDay = [
+  ["10:00", "22:00"],
+  ["09:00", "21:00"],
+  ["09:00", "21:00"],
+  ["09:00", "21:00"],
+  ["09:00", "21:00"],
+  ["09:00", "22:00"],
+  ["10:00", "23:00"],
+];
 const transitionTiming = {
   close: 0.42,
   lineIn: 0.2,
@@ -173,6 +183,15 @@ const handleNavClick = (event) => {
   animateWithNativeMotion(target, hash);
 };
 
+const updateTodayHours = () => {
+  if (!todayHours) {
+    return;
+  }
+
+  const [opensAt, closesAt] = scheduleByDay[new Date().getDay()];
+  todayHours.textContent = `Открыто сегодня с ${opensAt} до ${closesAt}`;
+};
+
 const startTypingLoop = () => {
   if (!typingText) {
     return;
@@ -252,6 +271,7 @@ const activateGallerySlide = (index) => {
 };
 
 updateScroll();
+updateTodayHours();
 startTypingLoop();
 updateGallery();
 window.addEventListener("scroll", updateScroll, { passive: true });
