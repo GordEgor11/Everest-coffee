@@ -307,6 +307,18 @@ body {
   mask-image: linear-gradient(180deg, transparent, #000 28%, transparent 100%);
 }
 
+.menu-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 5px;
+  background: currentColor;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
 .menu-section__inner {
   position: relative;
   z-index: 1;
