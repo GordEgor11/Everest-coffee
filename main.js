@@ -1,7 +1,5 @@
-const coffeeItems = document.querySelectorAll(".coffee");
 const siteNav = document.querySelector(".site-nav");
-const heroScroll = document.querySelector(".hero-scroll");
-const heroSection = document.querySelector(".hero");
+const menuStickyLine = document.querySelector(".menu-section__sticky-line");
 const navLinks = document.querySelectorAll(".site-nav__link[href^='#']");
 const transitionScreen = document.querySelector(".transition-screen");
 const transitionPanels = document.querySelectorAll(".transition-screen__panel");
@@ -15,15 +13,15 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let isTransitioning = false;
 let galleryIndex = 0;
-const typingWords = ["COFFEE", "DESSERTS", "TEA"];
+const typingWords = ["COFFEE", "DESSERTS", "TEA", "BREAKFEST", "PASTA"];
 const scheduleByDay = [
-  ["10:00", "22:00"],
-  ["09:00", "21:00"],
-  ["09:00", "21:00"],
-  ["09:00", "21:00"],
-  ["09:00", "21:00"],
-  ["09:00", "22:00"],
-  ["10:00", "23:00"],
+  ["08:00", "21:00"],
+  ["08:00", "21:00"],
+  ["08:00", "21:00"],
+  ["08:00", "21:00"],
+  ["08:00", "21:00"],
+  ["08:00", "21:00"],
+  ["08:00", "21:00"],
 ];
 const transitionTiming = {
   close: 0.42,
@@ -34,15 +32,15 @@ const transitionTiming = {
 };
 
 const updateScroll = () => {
-  coffeeItems.forEach((item) => {
-    const speed = Number(item.dataset.speed);
-    item.style.setProperty("--offset-y", `${window.scrollY * speed}px`);
-  });
+  if (siteNav) {
+    const navRect = siteNav.getBoundingClientRect();
+    const stickyTop = Math.ceil(navRect.bottom);
+    document.documentElement.style.setProperty("--menu-sticky-top", `${stickyTop}px`);
 
-  if (siteNav && heroScroll && heroSection) {
-    const heroTop = heroScroll.getBoundingClientRect().top + window.scrollY;
-    const heroBottom = heroTop + heroSection.offsetHeight;
-    siteNav.classList.toggle("is-hidden", window.scrollY >= heroBottom - 2);
+    if (menuStickyLine) {
+      const lineRect = menuStickyLine.getBoundingClientRect();
+      menuStickyLine.classList.toggle("is-stuck", lineRect.top <= stickyTop + 0.5);
+    }
   }
 };
 
