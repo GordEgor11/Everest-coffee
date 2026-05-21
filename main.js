@@ -7,12 +7,14 @@ const transitionPanelItems = Array.from(transitionPanels);
 const transitionLine = document.querySelector(".transition-screen__line");
 const typingText = document.querySelector(".hero__typing-text");
 const todayHours = document.querySelector("[data-today-hours]");
+const galleryIntro = document.querySelector(".gallery-section__intro");
 const gallerySlides = Array.from(document.querySelectorAll(".gallery-slide"));
-const galleryButtons = document.querySelectorAll("[data-gallery-direction]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let isTransitioning = false;
 let galleryIndex = 0;
+let galleryTimer = null;
+const galleryAutoplayDelay = 3000;
 const typingWords = ["COFFEE", "DESSERTS", "TEA", "BREAKFEST", "PASTA"];
 const scheduleByDay = [
   ["08:00", "21:00"],
@@ -237,16 +239,9 @@ const updateGallery = () => {
     return;
   }
 
-  const lastIndex = gallerySlides.length - 1;
-  const previousIndex = galleryIndex === 0 ? lastIndex : galleryIndex - 1;
-  const nextIndex = galleryIndex === lastIndex ? 0 : galleryIndex + 1;
-
   gallerySlides.forEach((slide, index) => {
     slide.classList.toggle("is-active", index === galleryIndex);
-    slide.classList.toggle("is-prev", index === previousIndex);
-    slide.classList.toggle("is-next", index === nextIndex);
     slide.setAttribute("aria-hidden", index === galleryIndex ? "false" : "true");
-    slide.setAttribute("tabindex", index === galleryIndex ? "-1" : "0");
   });
 };
 
@@ -259,34 +254,70 @@ const moveGallery = (direction) => {
   updateGallery();
 };
 
-const activateGallerySlide = (index) => {
-  if (index === galleryIndex) {
+const startGalleryAutoplay = () => {
+  if (!gallerySlides.length || reduceMotion.matches || galleryTimer) {
     return;
   }
 
-  galleryIndex = index;
-  updateGallery();
+  galleryTimer = window.setInterval(() => moveGallery(1), galleryAutoplayDelay);
+};
+
+const stopGalleryAutoplay = () => {
+  if (!galleryTimer) {
+    return;
+  }
+
+  window.clearInterval(galleryTimer);
+  galleryTimer = null;
+};
+
+const revealGalleryText = () => {
+  if (!galleryIntro) {
+    return;
+  }
+
+  if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+    galleryIntro.classList.add("is-visible");
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      rootMargin: "0px 0px -18% 0px",
+      threshold: 0.2,
+    },
+  );
+
+  observer.observe(galleryIntro);
 };
 
 updateScroll();
 updateTodayHours();
 startTypingLoop();
 updateGallery();
+revealGalleryText();
+startGalleryAutoplay();
 window.addEventListener("scroll", updateScroll, { passive: true });
 window.addEventListener("resize", updateScroll);
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    stopGalleryAutoplay();
+    return;
+  }
+
+  startGalleryAutoplay();
+});
 navLinks.forEach((link) => link.addEventListener("click", handleNavClick));
-galleryButtons.forEach((button) => {
-  button.addEventListener("click", () => moveGallery(Number(button.dataset.galleryDirection)));
-});
-gallerySlides.forEach((slide, index) => {
-  slide.addEventListener("click", () => activateGallerySlide(index));
-  slide.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      activateGallerySlide(index);
-    }
-  });
-});
 
 window.addEventListener("keydown", (event) => {
   const activeElement = document.activeElement;
